@@ -28,7 +28,7 @@ export class LoginComponent {
   login(){
     var acno=parseInt(this.acno);
     var password=this.pwd;
-    // alert(acno+","+password)
+    
     try {
         if(isNaN(acno)) throw "Invalid Account Number"
         if(acno.toString().length<2) throw "Account number must be atleast 4 characters"
