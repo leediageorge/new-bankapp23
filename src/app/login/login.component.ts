@@ -13,7 +13,7 @@ export class LoginComponent {
     1004:{name:"user4", acno:1004, pin:4567, password:'userfour', balance:4000},
     1005:{name:"user5", acno:1005, pin:5678, password:'userfive', balance:5000},
   }
-  acno="";
+  acno="123456";
   pwd="";
   constructor() { }
 
