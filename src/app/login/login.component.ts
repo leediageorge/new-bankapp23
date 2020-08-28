@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -6,16 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  accountDetails={
-    1001:{name:"user1", acno:1001, pin:1234, password:'userone', balance:3000},
-    1002:{name:"user2", acno:1002, pin:2345, password:'usertwo', balance:2500},
-    1003:{name:"user3", acno:1003, pin:3456, password:'userthree', balance:3500},
-    1004:{name:"user4", acno:1004, pin:4567, password:'userfour', balance:4000},
-    1005:{name:"user5", acno:1005, pin:5678, password:'userfive', balance:5000},
-  }
-  acno="123456";
-  pwd="";
-  constructor() { }
+  acno="1001";
+  pwd="userone";
+  constructor(private router:Router,
+    private dataService: DataService) { }
 
   acnoChange(event){
     this.acno = event.target.value;
@@ -36,13 +32,14 @@ export class LoginComponent {
         alert(error)
     }
 
-    var data=this.accountDetails;
+    var data=this.dataService.accountDetails;
     
     if (acno in data){
         var pwd = data[acno].password
         if (pwd==password){
             alert('Login Successful')
-            window.location.href="userhome.html"
+            // window.location.href="userhome.html"
+            this.router.navigateByUrl("dashboard")
         }
         else{
             alert('Incorrect password')
